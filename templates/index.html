@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Resource Planning Analyser</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+                <input class="form-input" type="text" name="Projects in Pipeline" placeholder="Projects in Pipeline: Please specify # of projects eg. 10,20,30"><br>
+                <input class="form-input" type="text" name="Number of on-going Projects" placeholder="Number of on-going Projects: eg. 10,20,30"><br>
+                <input class="form-input" type="text" name="Average Duration of project (in months)" placeholder="Average Duration of project (in months):eg:(1,2,3,4)"><br>
+                <input class="form-input" type="text" name="Average number of hours to complete project" placeholder="Average number of hours to complete project"><br>
+                <input class="form-input" type="text" name="Estimated Budgeted hours" placeholder="Estimated Budgeted hours:Multiply avg hours & number of on-going projects"><br>
+		
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
